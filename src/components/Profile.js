@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { PROFILE_PIC_URL_PREFIX, TEAM_PIC_URL_PREFIX } from '../constants';
-
+// constant.js file export 没有default, 所以需要import
 class Profile extends React.Component {
     render() {
         const {
@@ -13,7 +13,9 @@ class Profile extends React.Component {
             playerId,
             pts, reb, ast, pie,
         } = this.props.playerInfo;
+        console.log(this.props.playerInfo);
         return (
+
             <div className="profile">
                 <div className="profile-entry player-name">{`${playerName}`}</div>
                 <img

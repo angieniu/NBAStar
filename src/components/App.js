@@ -1,5 +1,6 @@
 import React from 'react';
 import TopNavBar from './TopNavBar';
+//import component
 import Main from './Main';
 
 function App() {
@@ -10,5 +11,5 @@ function App() {
     </div>
   );
 }
-
+// <TopNavBar /> in js file, to initiate component.
 export default App;

@@ -3,6 +3,7 @@ import Profile from './Profile';
 import nba from '../nba-client';
 import ShotChart from './ShotChart';
 
+// class Main 方便样式设计
 class Main extends Component {
     constructor(){
         super();
@@ -12,11 +13,16 @@ class Main extends Component {
         }
     }
 
-    componentDidMount(){
+    // 父传子 props main传profile,而不必要app传profile
+    componentDidMount(){ // get data from server
+        //把nba给到全局
         window.nba = nba;
+        // 连接 nba-client playerinfo function 数据
         nba.stats.playerInfo({ PlayerID: this.state.playerId})
             .then((info) => {
 console.log(info);
+// data 整合 es6 Object api: assign method
+
                 const playerInfo = Object.assign({}, info.commonPlayerInfo[0], info.playerHeadlineStats[0]);
                 console.log("final player info", playerInfo);
                 this.setState({ playInfo: playerInfo });
@@ -28,10 +34,15 @@ console.log(info);
     render() {
         return (
             <div className="main">
+
                 <Profile playerInfo={this.state.playInfo}/>
 
             </div>
         );
+        // 由于playerInfo可能变化，所以把data存为main component的私有属性, setState, update profile componenet.
+        //className ="main" for style
+        //传值方式 key value pair: playerInfo={this.state.playInfo}
+        // inspect components
     }
 }
 

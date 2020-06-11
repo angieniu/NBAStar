@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Profile from './Profile';
 import nba from '../nba-client';
 import ShotChart from './ShotChart';
+import DataViewContainer from "./DataViewContainer";
 
 // class Main 方便样式设计
 class Main extends Component {
@@ -34,11 +35,13 @@ console.log(info);
     render() {
         return (
             <div className="main">
-
                 <Profile playerInfo={this.state.playInfo}/>
+
+                <DataViewContainer playerId={this.state.playerId}/>
 
             </div>
         );
+        // playerID passes to shotchart, dataviewcontainer, coz main as parent.
         // 由于playerInfo可能变化，所以把data存为main component的私有属性, setState, update profile componenet.
         //className ="main" for style
         //传值方式 key value pair: playerInfo={this.state.playInfo}

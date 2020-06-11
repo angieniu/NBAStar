@@ -1,7 +1,7 @@
 import nba from 'nba';
 // npm install 'nba' library
 // service file to get nba statistics
-const SERVER_URL = 'http://35.235.84.235:5000';
+const SERVER_URL = 'https://nba.laiprojects.com';
 //server 访问address
 
 // export向外暴露API接口，调用nba statics, nba提供给的所有统计数据。

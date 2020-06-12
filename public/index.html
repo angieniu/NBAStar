@@ -28,9 +28,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.4.0/d3.min.js"></script>
     <script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
-
+<!--对dom进行操作，script在后面，或者在全局变量或者模块打包管理(react)不用排顺序，因为不用根据引入顺序决定使用，否则有依赖需要排顺序。不对dom进行操作，第三方library，在前面。-->
     <title>React App</title>
+
   </head>
+
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
@@ -44,5 +46,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
   </body>
 </html>

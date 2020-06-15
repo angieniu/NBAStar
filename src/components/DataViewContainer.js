@@ -11,7 +11,7 @@ parent
      App
      /    \
   header main
-          /     \
+          /     \auto
         profile  shotchart
                    X \  filter回传值给shotchart，filter default value from main. 三级联动, 父子
                    filter
@@ -29,7 +29,8 @@ parent
 class DataViewContainer extends Component {
     state = {
         minCount: 2,
-        chartType: 'hexbin'
+        chartType: 'hexbin',
+        displayTooltip: true,
     }
     onCounterSliderChange = (count) => {
         this.setState({ minCount: count });

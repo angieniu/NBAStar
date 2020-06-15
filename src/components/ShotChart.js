@@ -38,7 +38,7 @@ class ShotChart extends Component {
             const chart_court = court().width(500);
             // filter
             // this.props.minCount component update stage, but componentDidMount is in mounting stage, so use didupdate.
-            const chart_shots = shots().shotRenderThreshold(this.props.minCount).displayToolTips(true).displayType(this.props.chartType);
+            const chart_shots = shots().shotRenderThreshold(this.props.minCount).displayToolTips(this.props.displayTooltip).displayType(this.props.chartType);
             // dom + court
             courtSelection.call(chart_court);
 

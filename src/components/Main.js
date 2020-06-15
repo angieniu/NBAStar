@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
 import Profile from './Profile';
 import nba from '../nba-client';
-import ShotChart from './ShotChart';
+// import ShotChart from './ShotChart';
 import DataViewContainer from "./DataViewContainer";
+import SearchBar from './SearchBar';
+import { DEFAULT_PLAYER_INFO } from '../constants';
 
 // class Main 方便样式设计
 class Main extends Component {
     constructor(){
         super();
         this.state = {
-            playInfo: {},
-            playerId: 201939,
+            playerInfo: DEFAULT_PLAYER_INFO
         }
     }
 
@@ -18,26 +19,49 @@ class Main extends Component {
     componentDidMount(){ // get data from server
         //把nba给到全局
         window.nba = nba;
-        // 连接 nba-client playerinfo function 数据
-        nba.stats.playerInfo({ PlayerID: this.state.playerId})
-            .then((info) => {
-console.log(info);
-// data 整合 es6 Object api: assign method
+        this.loadPlayerInfo(DEFAULT_PLAYER_INFO.fullName);
 
-                const playerInfo = Object.assign({}, info.commonPlayerInfo[0], info.playerHeadlineStats[0]);
-                console.log("final player info", playerInfo);
-                this.setState({ playInfo: playerInfo });
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+        // 连接 nba-client playerinfo function 数据
+
+//         nba.stats.playerInfo({ PlayerID: this.state.playerId})
+//             .then((info) => {
+// console.log(info);
+// // data 整合 es6 Object api: assign method
+//
+//                 const playerInfo = Object.assign({}, info.commonPlayerInfo[0], info.playerHeadlineStats[0]);
+//                 console.log("final player info", playerInfo);
+//                 this.setState({ playInfo: playerInfo });
+//             })
+//             .catch((e) => {
+//                 console.log(e);
+//             });
     }
+
+    //复用函数
+    loadPlayerInfo = (playerName) => {
+        nba.stats.playerInfo({ PlayerID: nba.findPlayer(playerName).playerId}).then((info) => {
+            console.log(info);
+            const playInfo = Object.assign(info.commonPlayerInfo[0], info.playerHeadlineStats[0]);
+            console.log(playInfo);
+            this.setState({ playerInfo: playInfo });
+        })
+    }
+
+    handleSelectPlayer = (playerName) => {
+        this.loadPlayerInfo(playerName);
+    }
+
+
     render() {
         return (
             <div className="main">
-                <Profile playerInfo={this.state.playInfo}/>
+                <SearchBar handleSelectPlayer={this.handleSelectPlayer}/>
 
-                <DataViewContainer playerId={this.state.playerId}/>
+                <div className="player">
+                    <Profile playerInfo={this.state.playerInfo} />
+                    <DataViewContainer playerId={this.state.playerInfo.playerId}/>
+                </div>
+
 
             </div>
         );

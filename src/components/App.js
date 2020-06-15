@@ -13,3 +13,5 @@ function App() {
 }
 // <TopNavBar /> in js file, to initiate component.
 export default App;
+
+//如何对component布局: react router。目前,从data communication考虑component布局。

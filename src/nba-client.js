@@ -7,11 +7,11 @@ const SERVER_URL = 'https://nba.laiprojects.com';
 // export向外暴露API接口，调用nba statics, nba提供给的所有统计数据。
 export default { // export object as a whole
     // default 直接可以引入
-    ...nba,
+    ...nba, //nba库里所有接口解构到这里
     // all APIs from nba library
     //nba 统计statistics的接口, key value (object) pair
     stats: {
-        ...nba.stats,
+        ...nba.stats, // github CROS issue, usually we use server to fetch data instead of directly using browser to fetch data
         //special api, player info
         // 自命名 playerInfo
         // `${}`  Template String

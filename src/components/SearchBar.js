@@ -32,7 +32,7 @@ ui:
  */
 
 const Option = AutoComplete.Option;
-// const {Option} = AutoComplete;
+// const {Option} = AutoComplete;  // option是autocomplete的属性 // 下面的code直接<AutoComplete> 否则需要是AutoCpmplete.Option
 
 class SearchBar extends Component {
     state = {

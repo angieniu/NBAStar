@@ -21,6 +21,7 @@ export default { // export object as a whole
         playerInfo: function({ PlayerID }) {
             return fetch(`${SERVER_URL}/players/${PlayerID}`).then(res => res.json())
         },
+        //Backticks allow us to embed any expression into the string, by wrapping it in ${…}
         //fetch .then .then promise. es6 异步
         shots: function({ PlayerID }) {
             return fetch(`${SERVER_URL}/players/${PlayerID}/shots`).then(res => res.json())

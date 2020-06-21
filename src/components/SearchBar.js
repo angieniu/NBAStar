@@ -31,8 +31,9 @@ ui:
 3. Event: 1) select 2) 略 press enter 3) 略 光标移出input
  */
 
-const Option = AutoComplete.Option;
-// const {Option} = AutoComplete;  // option是autocomplete的属性 // 下面的code直接<AutoComplete> 否则需要是AutoCpmplete.Option
+const Option = AutoComplete.Option; //AutoComplete command + enter,
+// const {Option} = AutoComplete;  // option是autocomplete的属性，属性解构 // 下面的line63 code直接<AutoComplete> 如果没有line34,35,需要是AutoCopmplete.Option
+// line 34 and line 35 only keeps one.
 
 class SearchBar extends Component {
     state = {
